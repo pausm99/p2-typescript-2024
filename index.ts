@@ -1,4 +1,5 @@
-import { Character, getCharacters } from "./characters";
+import type { Character } from "./Character";
+import { getCharacters } from "./characters";
 import { render } from './render';
 import { writeFile } from "fs/promises";
 
