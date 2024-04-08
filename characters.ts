@@ -17,3 +17,11 @@ export class Character {
         public episode: string[]
     ) {}
 }
+
+const apiUrl = "https://rickandmortyapi.com/api/character";
+
+export const fetchCharacters = async (pageNumber: number) => {
+    const response = await fetch(`${apiUrl}?page=${pageNumber}`);
+    const { results, info } = (await response.json()) as { results: any[], info: any };
+    console.log(results);
+}

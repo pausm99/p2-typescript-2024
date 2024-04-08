@@ -1,9 +1,3 @@
-const apiUrl = "https://rickandmortyapi.com/api/character";
+import { fetchCharacters } from "./characters";
 
-const fetchData = async (pageNumber: number) => {
-    const response = await fetch(`${apiUrl}?page=${pageNumber}`);
-    const { results, info } = (await response.json()) as { results: any[], info: any };
-    console.log(results);
-}
-
-fetchData(1);
+fetchCharacters(1);
