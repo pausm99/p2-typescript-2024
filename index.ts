@@ -1,3 +1,7 @@
-import { fetchCharacters } from "./characters";
+import { Character, fetchCharacters } from "./characters";
+import { render } from './render';
+import { writeFile } from "fs/promises";
 
-fetchCharacters(1);
+const characters: Character[] = await fetchCharacters(1);
+const html = render(characters);
+await writeFile('characters.html', html);
