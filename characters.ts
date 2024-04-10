@@ -15,22 +15,17 @@ interface Info {
     prev: string;
 }
 
-export const getCharacters = async () => {
+export const getCharacters = async (limit: number) => {
     let currentPage = 1;
 
-    const { results, info } = await fetchCharacters(currentPage);
-    let characters: Character[] = results;
-    let pageInfo: Info = info;
+    let characters: Character[] = [];
 
-    ++currentPage;
-
-    while(currentPage < pageInfo.pages) {
+    while(limit > characters.length) {
         const { results, info } = await fetchCharacters(currentPage);
         
         characters = characters.concat(results);
-        pageInfo = info;
         
-        if (pageInfo.next === null) break;
+        if (info.next === null) break;
 
         ++currentPage;
     };
