@@ -1,5 +1,5 @@
-import type { Character } from "./characters";
 import { readFileSync } from "fs";
+import type { Character } from "./Character";
 
 const head = (title: string) => {
     return `
@@ -7,9 +7,7 @@ const head = (title: string) => {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>${title}</title>
-        <style>
-            ${loadStyles()}
-        </style>
+        <link rel="stylesheet" href="styles.css">
     `;
 };
 
@@ -21,8 +19,11 @@ const renderCharacters = (characters: Character[]) => {
         characters.forEach(character => {
             html += `
                 <li class="character">
-                    <h2>${character.name}</h2>
-                    <img src="${character.image}" alt="${character.name} photo">
+                    <div class="character-info">
+                        <h2 class="character-name">${character.name}</h2>
+                        <span class="character-species">${character.species}</span>
+                    </div>
+                    <img class="character-image" src="${character.image}" alt="${character.name} photo">
                 </li>
             `;
         });
@@ -43,8 +44,10 @@ export const render = (characters: Character[]) => {
         <html>
             <head>${head('Rick and Morty characters list')}</head>
             <body>
-                <h1>Rick and Morty's universe - Characters list</h1>
-                ${renderCharacters(characters)}
+                <main>
+                    <h1>Rick and Morty's universe - Characters list</h1>
+                    ${renderCharacters(characters)}
+                </main>
             </body>
         </html>
     `;
