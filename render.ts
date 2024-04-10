@@ -52,7 +52,7 @@ const createIndividualCharacterPage = async (character: Character) => {
                     <p>${character.status}</p>
                 </main>
             </body>
-        </html>;
+        </html>
     `;
 
     await writeFile(`characters/character_${character.id}.html`, html);
