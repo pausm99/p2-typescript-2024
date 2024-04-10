@@ -2,13 +2,14 @@ import type { Character } from "./Character";
 import { mkdir, writeFile } from "fs/promises";
 import { existsSync } from "fs";
 
-const head = (title: string) => {
+const head = (title: string, individual: boolean) => {
+    const styleRoute = individual ? '../styles/character.css' : './styles/main.css';
     return `
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>${title}</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href=${styleRoute}>
     `;
 };
 
@@ -43,7 +44,7 @@ const renderCharacters = (characters: Character[]) => {
 const createIndividualCharacterPage = async (character: Character) => {
     const html = `
         <html>
-            <head>${head(character.name)}</head>
+            <head>${head(character.name, true)}</head>
             <body>
                 <main>
                     <h1>${character.name}</h1>
@@ -67,7 +68,7 @@ const createFolder = () => {
 export const render = (characters: Character[]) => {
     return `
         <html>
-            <head>${head('Rick and Morty characters list')}</head>
+            <head>${head('Rick and Morty characters list', false)}</head>
             <body>
                 <main>
                     <h1>Rick and Morty's universe - Characters list</h1>
