@@ -1,4 +1,3 @@
-import { readFileSync } from "fs";
 import type { Character } from "./Character";
 
 const head = (title: string) => {
