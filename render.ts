@@ -34,11 +34,6 @@ const renderCharacters = (characters: Character[]) => {
     return html;
 }
 
-const loadStyles = () => {
-    const styles = readFileSync('./styles.css', 'utf8');
-    return styles;
-}
-
 export const render = (characters: Character[]) => {
     return `
         <html>
