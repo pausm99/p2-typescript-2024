@@ -3,7 +3,7 @@ import { mkdir, writeFile } from "fs/promises";
 import { existsSync } from "fs";
 
 const head = (title: string, individual: boolean) => {
-    const styleRoute = individual ? '../styles/character.css' : './styles/main.css';
+    const styleRoute = individual ? '../assets/styles/character.css' : './assets/styles/main.css';
     return `
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,11 +25,11 @@ const renderCharacters = (characters: Character[]) => {
             html += `
                 <li class="character">
                     <a href="characters/character_${character.id}.html">
-                    <div class="character-info">
-                        <h2 class="character-name">${character.name}</h2>
-                        <span class="character-species">${character.species}</span>
-                    </div>
-                    <img class="character-image" src="${character.image}" alt="${character.name} photo">
+                        <div class="character-info">
+                            <h2 class="character-name">${character.name}</h2>
+                            <span class="character-species">${character.species}</span>
+                        </div>
+                        <img class="character-image" src="${character.image}" alt="${character.name} photo">
                     </a>
                 </li>
             `;
@@ -47,6 +47,7 @@ const createIndividualCharacterPage = async (character: Character) => {
             <head>${head(character.name, true)}</head>
             <body>
                 <main>
+                    <span class="back-link"><a href="../characters.html"></a></span>
                     <h1>${character.name}</h1>
                     <img src="${character.image}" alt="${character.name} photo">
                     <p>${character.species}</p>
