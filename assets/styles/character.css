@@ -6,6 +6,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #FBFBFB;
+    color: #333;
 }
 
 main {
@@ -14,6 +16,12 @@ main {
     justify-content: center;
     align-items: center;
     position: relative;
+    max-width: 1500px;
+    text-transform: capitalize;
+}
+
+p {
+    margin: 0;
 }
 
 @media (min-width: 1200px) {
@@ -29,8 +37,15 @@ main {
     height: 30px;
     width: 30px;
     position: absolute;
-    top: 1rem;
-    left: 0;
+    top: 0rem;
+    left: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .back-link {
+        top: 1rem;
+        left: 1rem;
+    }
 }
 
 .back-link a {
@@ -48,4 +63,109 @@ main {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.character {
+    width: 100%;
+    max-width: 800px;
+    align-items: center;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    place-self: center;
+}
+
+span {
+    margin-right: 0.5rem;
+    font-style: italic;
+}
+
+.character-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #a2c1e2;
+    padding: 20px;
+    color: #112A46;
+}
+
+.character-info p {
+    margin: 5px 0;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+}
+
+.status::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 7px;
+    animation: pulse 1s infinite alternate;
+}
+
+.status.dead::after {
+    background-color: rgba(236, 22, 22, 0.957);
+}
+
+.status.alive::after {
+    background-color: rgba(16, 138, 16, 0.891);
+}
+
+.status.unknown::after {
+    background-color: gray;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (min-width: 450px) {
+    img {
+        max-width: 300px;
+    }
+}
+
+@media (min-width: 768px) {
+    .character {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .character-info {
+        height: 100%;
+        margin-top: 0;
+    }
+
+    span, p {
+        font-size: 1.2rem;
+    }
+
+    img {
+        max-width: unset;
+        height: 100%;
+        width: auto;
+    }
 }

@@ -49,9 +49,17 @@ const createIndividualCharacterPage = async (character: Character) => {
                 <main>
                     <span class="back-link"><a href="../characters.html"></a></span>
                     <h1>${character.name}</h1>
-                    <img src="${character.image}" alt="${character.name} photo">
-                    <p>${character.species}</p>
-                    <p>${character.status}</p>
+                    <div class="character">
+                        <img src="${character.image}" alt="${character.name} photo">
+                        <div class="character-info">
+                            <p><span>Species:</span>${character.species}</p>
+                            <p class="status ${character.status}"><span>Status:</span>${character.status}</p>
+                            <p><span>Gender:</span>${character.gender}</p>
+                            <p><span>Location:</span>${character.location.name}</p>
+                            <p><span>Origin:</span>${character.origin.name}</p>
+                            <p><span>Nº episodes:</span>${character.episode.length}</p>
+                        </div>
+                    </div>
                 </main>
             </body>
         </html>
